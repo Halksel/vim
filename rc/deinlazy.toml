@@ -1,0 +1,38 @@
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+disabled = '!has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_i = 1
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = '<Plug>'
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = 'haskell'
+external_commands = 'ghc-mod'

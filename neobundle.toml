@@ -1,0 +1,12 @@
+[[plugins]]
+repository = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+insert = 1
+
+[[plugins]]
+repository = 'osyo-manga/vim-watchdogs'
+depends = ['osyo-manga/shabadou.vim', 'cohama/vim-hier']
+filetypes = 'all'
+

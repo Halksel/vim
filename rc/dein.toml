@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'thinca/vim-unite-history'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'osyo-manga/unite-filetype'
+
+[[plugins]]
+repo = 'kana/vim-filetype-haskell'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'Shougo/unite-sudo'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+on_ft = 'cpp'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# Operators
+[[plugins]]
+repo = 'Shougo/unite-build'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+on_source = 'unite.vim'

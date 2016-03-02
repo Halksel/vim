@@ -1,0 +1,301 @@
+*snowdrop.txt*		Vim で libclang を使用したプラグインです。
+
+==============================================================================
+目次						*snowdrop-contents*
+
+概要				|snowdrop-introduction|
+インターフェース		|snowdrop-interface|
+  コマンド			  |snowdrop-commands|
+  関数				  |snowdrop-functions|
+設定				|snowdrop-setting|
+  snowdrop の変数		  |snowdrop-variables|
+コンテキスト			|snowdrop-context|
+marching.vim			|snowdrop-marching|
+neocomplete-sources		|snowdrop-neocomplete|
+unite-sources			|snowdrop-unite-sources|
+
+
+==============================================================================
+概要						*snowdrop-introduction*
+
+Clang の libclang を利用したプラグインです。
+
+Requirement:
+	Clang 3.3 - http://llvm.org/releases/3.3/tools/clang/docs/ReleaseNotes.html
+	|+python|
+
+
+==============================================================================
+インターフェース				*snowdrop-interface*
+
+------------------------------------------------------------------------------
+コマンド					*snowdrop-commands*
+
+:SnowdropGotoDefinition				*:SnowdropGotoDefinition*
+	カーソル下の単語の定義位置へ移動します。
+	定義が見つからなければ宣言位置へ移動します。
+	この時に別のファイルを開く場合は |g:snowdrop#goto_definition_open_cmd|
+	に設定されているコマンドを使用して開かれます。
+
+:SnowdropEchoTypeof				*:SnowdropEchoTypeof*
+	カーソル下の型情報を出力します。
+
+:SnowdropEchoResultTypeof			*:SnowdropEchoResultTypeof*
+	カーソル下の関数の戻り値型情報を出力します。
+
+:SnowdropEchoIncludes				*:SnowdropEchoIncludes*
+	現在のバッファがインクルードしているヘッダーファイルの一覧を出力しま
+	す。
+
+:SnowdropVerify					*:SnowdropVerify*
+	現在の環境での動作を確認します。
+	プラグインを導入してからこのコマンドで問題なく動作することを確認してみ
+	るとよいでしょう。
+
+:SnowdropErrorCheck				*:SnowdropErrorCheck*
+	カレントバッファのコードのエラーチェックを行います。
+	エラー（もしくは警告）があった場合は |quickfix| へと出力を行います。
+
+------------------------------------------------------------------------------
+関数						*snowdrop-functions*
+
+snowdrop#get_libclang_filename()		*snowdrop#get_libclang_filename()*
+	読み込まれる libclang のファイルパスを返します。
+	これは |g:snowdrop#libclang_path| や |g:snowdrop#libclang_file| の
+	設定に依存します。
+	また、|g:snowdrop#libclang_file| が空の文字列であれば環境によって自動
+	的にファイル名が決定されます。
+
+	MacOS    : "libclang.dylib"
+	Windows  : "libclang.dll"
+	それ以外 : "libclang.so"
+
+Example: >
+	" Windows の場合
+	echo snowdrop#get_libclang_filename()
+	" => libclang.dll
+<
+
+snowdrop#get_libclang_version([{libclang}])	*snowdrop#get_libclang_version()*
+	{libclang} のバージョンを返す。
+	引数がなければ |snowdrop#get_libclang()| が使用される。
+	また、これは |+python| がなくても動作する。
+Example: >
+	echo snowdrop#get_libclang_version()
+	" => clang version 3.3 (tags/RELEASE_33/final)
+<
+snowdrop#current_includes([{context}])		*snowdrop#current_includes()*
+	カレントバッファで include が行われているファイルのリストを返します。
+	これは再帰的に全てのインクルードファイルを検索します。
+
+
+snowdrop#definition_in_cursor()			*snowdrop#definition_in_cursor()*
+	カーソル下の単語の定義位置を次の3つの要素を持つリストで返します。
+		[filename, line, col]
+	また、定義が見つからなければ宣言を返します。
+
+					*snowdrop#goto_definition_in_cursor()*
+snowdrop#goto_definition_in_cursor([{opencmd}, {context}])
+	カーソル下の単語の定義場所へ移動する。
+	また、定義が見つからなければ宣言へと移動する。
+	{opencmd} は宣言場所のファイルを開く際のコマンドになる。
+	デフォルトでは |g:snowdrop#goto_definition_open_cmd| が使用される。
+
+
+snowdrop#ballonexpr_typeof()			*snowdrop#ballonexpr_typeof()*
+	カーソル下の型情報を |balloon-eval| で表示するための関数です。
+	表示される情報は |::SnowdropEchoTypeof| と同等です。
+	|bexpr| に設定を行い使用します。
+Example: >
+	set bexpr=snowdrop#ballonexpr_typeof()
+	set ballooneval
+<
+
+
+==============================================================================
+設定						*snowdrop-setting*
+
+------------------------------------------------------------------------------
+snowdrop の変数					*snowdrop-variables*
+
+g:snowdrop#libclang_directory			*g:snowdrop#libclang_directory*
+	libclang へのディレクトリパスを設定します。
+
+Default: >
+	let g:snowdrop#libclang_path = ""
+<
+Example: >
+	let g:snowdrop#libclang_path = "C:/llvm/bin"
+<
+
+g:snowdrop#libclang_file			*g:snowdrop#libclang_file*
+	libclang のファイル名を設定します。
+
+Example >
+	let g:snowdrop#libclang_file = "liblibclang.dll"
+<
+
+g:snowdrop#include_paths			*g:snowdrop#include_paths*
+	 |filetype| をキーとしたインクルードパスを辞書で設定します。
+	 また、インクルードパスはこの変数に設定されている以外も 'path' を参照
+	 します。
+
+Example >
+	" 標準ライブラリのパスも追加しておく必要があります。
+	let g:snowdrop#include_paths = {
+	\	"cpp" : [
+	\		"C:/MinGW/lib/gcc/mingw32/4.6.2/include/c++",
+	\		"C:/cpp/boost",
+	\		"C:/cpp/sprout",
+	\	]
+	\}
+
+	" Unix 系の設定例
+	" https://github.com/osyo-manga/vim-marching/issues/4
+	let g:snowdrop#include_paths = {
+	\	"cpp" : filter(
+	\	split(glob('/usr/include/c++/*'), '\n') +
+	\	split(glob('/usr/include/*/c++/*'), '\n') +
+	\	split(glob('/usr/include/*/'), '\n'),
+	\	'isdirectory(v:val)')
+	\}
+
+<
+g:snowdrop#goto_definition_open_cmd	*g:snowdrop#goto_definition_open_cmd*
+	|snowdrop#goto_cursor_definition()| で使用されるファイルを開くためのコ
+	マンドを設定する
+Default: >
+	let g:snowdrop#goto_definition_open_cmd = "edit"
+<
+
+g:snowdrop#command_options		*g:snowdrop#command_options*
+	|filetype| をキーとした Clang のコマンドオプションを設定する辞書です。
+Example: >
+	let g:snowdrop#command_options = {
+	\	"cpp" : "-std=c++1y",
+	\}
+<
+
+b:snowdrop_command_option			*b:snowdrop_command_option*
+	バッファローカルに設定する Clang のコマンドオプションです。
+
+
+g:neocomplete#sources#snowdrop#enable	*g:neocomplete#sources#snowdrop#enable*
+	-0 以外が設定されていれば |neocomplete.vim| によるコード補完を有効にし
+	ます。
+	デフォルトでは無効になっているので有効にしたい場合は明示的に設定を行っ
+	て下さい。
+Default: >
+	let g:neocomplete#sources#snowdrop#enable = 0
+<
+
+g:snowdrop#libclang#default_binding	*g:snowdrop#libclang#default_binding*
+	使用する |snowdrop-libclang-bindings| を設定します。
+Default: >
+	let g:snowdrop#libclang#default_binding = "python"
+<
+
+
+==============================================================================
+コンテキスト						*snowdrop-context*
+
+						*snowdrop-context-filename*
+filename		String		(Required)
+			ファイル名
+
+						*snowdrop-context-source*
+source			String		(Required)
+			ソースコード
+
+						*snowdrop-context-option*
+option			String		(Optional)
+			Clang のコマンドオプション
+
+
+==============================================================================
+libclang のバインディング			*snowdrop-libclang-bindings*
+
+|snowdrop.vim| では libclang を呼び出す為の手段がいくつか実装されています。
+これは |g:snowdrop#libclang#default_binding| で使用する実装を設定する事ができ
+る。
+要求する機能が実装ごとに異なるので、自分の環境にあった実装を設定するとよいで
+しょう。
+
+
+------------------------------------------------------------------------------
+python						*snowdrop-libclang-python*
+
+Vim の |python| を使用した実装です。
+
+- Requirement:
+	Clang 3.3 - http://llvm.org/releases/3.3/tools/clang/docs/ReleaseNotes.html
+	|+python|
+
+
+------------------------------------------------------------------------------
+python_interpreter			*snowdrop-libclang-python_interpreter*
+
+Python の対話環境を使用した実装です。
+
+NOTE: 対象のファイル（バッファ）の行数や実行結果の量が大きい場合は、
+|snowdrop-libclang-python| の方が高速で動作します。
+
+- Requirement:
+	Clang 3.3 - http://llvm.org/releases/3.3/tools/clang/docs/ReleaseNotes.html
+	python コマンド
+	|vimproc.vim| - https://github.com/Shougo/vimproc.vim
+
+
+==============================================================================
+marching.vim						*snowdrop-marching*
+
+|snowdrop.vim| を利用したコード補完を |marching.vim| で使用することができま
+す。
+
+- marching.vim - https://github.com/osyo-manga/vim-marching
+
+|marching.vim| で |snowdrop.vim| を利用したコード補完を使用したい場合は下記の設定を
+行って下さい。
+>
+	let g:marching_backend = "snowdrop"
+<
+
+また、|snowdrop.vim| でコード補完を行う場合は補完中にキー入力は受け付けないの
+で注意して下さい。
+この実装を使用した場合、|marching.vim| は |reunions| と |vimproc| には依存しなくな
+ります
+
+
+==============================================================================
+neocomplete-sources					*snowdrop-neocomplete*
+
+|snowdrop.vim| には |neocomplete.vim| でコード補完を行うための
+|neocomplete-sources| が付属しています。
+|neocomplete.vim| とは Shougo 氏が作成されたコード補完プラグインです。
+
+- neocomplete.vim - https://github.com/Shougo/neocomplete.vim
+
+|neocomplete.vim| で |snowdrop.vim| のコード補完を利用したい場合は、以下の設定
+を行って下さい。
+
+>
+	let g:neocomplete#sources#snowdrop#enable = 1
+<
+
+
+==============================================================================
+unite-sources					*snowdrop-unite-sources*
+
+|snowdrop.vim| には |unite-sources| がいくつか付属しています。
+
+						*unite-source-snowdrop/includes*
+snowdrop/includes	カレントバッファのインクルードファイルの一覧を出力し
+			ます。
+			|:SnowdropEchoIncludes| と同等のものが出力されます。
+
+						*unite-source-snowdrop/outline*
+snowdrop/outline	カレントバッファのアウトライン一覧を出力します。
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl

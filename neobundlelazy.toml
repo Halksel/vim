@@ -1,0 +1,44 @@
+# complete
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+depends    = ['Shougo/neoinclude.vim', 'Shougo/context_filetype.vim']
+insert     = 1
+
+# C/C++
+[[plugins]]
+repository = 'justmao945/vim-clang'
+filetypes  =  ['c', 'cpp']
+
+[[plugins]]
+repository = 'ujihisa/neco-ghc'
+
+[[plugins]]
+repository = 'eagletmt/ghcmod-vim'
+
+[[plugins]]
+repository = 'thinca/vim-ref'
+
+[[plugins]]
+repository = 'ujihisa/ref-hoogle'
+
+[[plugins]]
+repository = 'dag/vim2hs'
+
+[[plugins]]
+repository= 'ujihisa/neco-look'
+
+[[plugins]]
+repository = 'Shougo/unite.vim.git'
+
+[[plugins]]
+repository = "osyo-manga/vim-snowdrop"
+
+[[plugins]]
+repository = 'ujihisa/unite-haskellimport'
+[[plugins]]
+repository = 'kana/vim-filetype-haskell'
+
+[[plugins]]
+repository = "tyru/caw.vim.git"
+[[plugins]]
+repository = 'thinca/vim-quickrun'
