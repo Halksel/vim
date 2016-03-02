@@ -1,3 +1,6 @@
+" my .vimrc is copying Shougo's .vimrc.
+" https://github.com/Shougo/shougo-s-github/tree/master/vim
+
 if &compatible
     set nocompatible
   endif
