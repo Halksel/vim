@@ -1,3 +1,26 @@
+"Don't Use CursolKey!
+vnoremap  <Up>     <nop>
+vnoremap  <Down>   <nop>
+vnoremap  <Left>   <nop>
+vnoremap  <Right>  <nop>
+inoremap  <Up>     <nop>
+inoremap  <Down>   <nop>
+inoremap  <Left>   <nop>
+inoremap  <Right>  <nop>
+noremap   <Up>     <nop>
+noremap   <Down>   <nop>
+noremap   <Left>   <nop>
+noremap   <Right>  <nop>
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <UP>
+inoremap <C-l> <Right>
+
+inoremap <C-d> <Del>
+
 " Visual mode keymappings: "{{{
 " <TAB>: indent.
 xnoremap <TAB> >
@@ -12,10 +35,13 @@ nnoremap < <<
 " Insert mode keymappings: "{{{
 " <C-t>: insert tab.
 inoremap <C-t>  <C-v><TAB>
-" Enable undo <C-w> and <C-u>.
-inoremap <C-w>  <C-g>u<C-w>
-inoremap <C-u>  <C-g>u<C-u>
+
 "}}}
+
+" Normal mode keymappings: "{{{
+nnoremap <C-w><C-w> <C-w>l
+"}}}
+
 " [Space]: Other useful commands "{{{
 " Smart space mapping.
 nmap  <Space>   [Space]
@@ -60,7 +86,7 @@ endfunction  "}}}
 
 
 " Disable Ex-mode.
-  nnoremap Q  q
+nnoremap Q  q
 
 " Disable ZZ.
 nnoremap ZZ  <Nop>
@@ -90,12 +116,3 @@ noremap zz za
 nnoremap <ESC><ESC> :nohlsearch<CR>:match<CR>
 "}}}
 
-" コメントアウトを切り替えるマッピング
-" \c でカーソル行をコメントアウト
-" 再度 \c でコメントアウトを解除
-" 選択してから複数行の \c も可能
-nmap \c <Plug>(caw:I:toggle)
-vmap \c <Plug>(caw:I:toggle)
-" \C でコメントアウトの解除
-nmap \C <Plug>(caw:I:uncomment)
-vmap \C <Plug>(caw:I:uncomment)

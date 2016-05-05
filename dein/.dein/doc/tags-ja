@@ -1,4 +1,5 @@
 !_TAG_FILE_ENCODING	utf-8	//
+b:context_filetype_filetypes	context_filetype.jax	/*b:context_filetype_filetypes*
 context_filetype#default_filetypes()	context_filetype.jax	/*context_filetype#default_filetypes()*
 context_filetype#get()	context_filetype.jax	/*context_filetype#get()*
 context_filetype#get_filetype()	context_filetype.jax	/*context_filetype#get_filetype()*

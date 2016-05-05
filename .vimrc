@@ -11,6 +11,8 @@ endfunction
 
 filetype off
 
+set path +=~/.vim/rc
+
 " Use ',' instead of '\'.
 " Use <Leader> in global plugin.
 let g:mapleader = ','
@@ -35,7 +37,7 @@ set number "行番号を表示する
 set cindent
 let loaded_matchparen = 1
 set clipboard+=autoselect
-set pastetoggle=<F6>
+set pastetoggle=<F7>
 set tabstop=2 "Tabをスペース2つに設定
 set expandtab "Tabを半角スペースで設定
 set shiftwidth=2 "vimにより生成されるファイルのtabを2つに設定
@@ -43,25 +45,24 @@ set smarttab "新しい行を作った時に高度な自動インデントを行
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止めない
 set magic
 set autoindent smartindent
+set cursorline
 
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "Keymapping -normal
-noremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
-noremap <F4> :<C-u>.tabedit ~/Documents/codes/AOJ/Snipet.cpp<CR>
 noremap <Tab> >>
 noremap \<C-i> <C-i>
 noremap <S-Tab> <<
 nnoremap <silent> <leader>ht :GhcModType<CR>
-nnoremap ff :<C-u>SnowdropEchoTypeof<CR>
-nnoremap <Esc><Esc> :<C-u>call Chengehlsearch()<CR>
-nnoremap fc :<C-u>call Chengefoldenable()<CR>
 nnoremap <C-K> <Plug>(caw:i:toggle)
-nnoremap <F1> :%y<CR>
-nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/AOJ/Snipet.cpp<CR>GVggyZZpggdd61Go
+nnoremap <F1> :%y+<CR>
+nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Snipet/Snipet.cpp<CR>GVggyZZpggdd59Go
 nnoremap <F3> GVgg=
+nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Snipet/Snipet.cpp<CR>
+nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
+nnoremap <F6> :<C-u>.tabedit ~/Documents/codes/Snipet/Templete.cpp<CR>
 nnoremap / /\v
 
 " http://inari.hatenablog.com/entry/2014/05/05/231307
@@ -72,11 +73,6 @@ function! ZenkakuSpace()
     highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
 
-let $VIM_CPP_STDLIB = "/opt/local/include/gcc49/c++"
-augroup cpp-path
-  autocmd!
-  autocmd FileType cpp setlocal path=/usr/include,/usr/local/include,/opt/local/include/gcc49/c++
-augroup END
 
 if has('syntax')
     augroup ZenkakuSpace
@@ -113,65 +109,70 @@ function! Mopp_fold()
   'S%s', line, '', tail)
 endfunction
 
-let g:snowdrop#libclang_directory = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-
-
 " dein
+if 1
+"  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-
-call dein#begin(expand('~/.vim/dein'))
-
-let s:toml_path = '~/.vim/rc/dein.toml'
-let s:toml_lazy_path = '~/.vim/rc/deinlazy.toml'
-if dein#load_cache([expand('<sfile>'), s:toml_path, s:toml_lazy_path])
-  call dein#load_toml(s:toml_path, {'lazy': 0})
-  call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
-
-
-  call dein#save_cache()
-endif
-call s:source_rc('plugins.rc.vim')
-
-call dein#end()
-
-if dein#check_install()
-  " Installation check.
-  call dein#install()
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim'
+    s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-"---------------------------------------------------------------------------
-"" Encoding:
-"
+  if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+    let s:toml_path = expand('~/.vim/rc/dein.toml')
+    let s:toml_lazy_path = expand('~/.vim/rc/deinlazy.toml')
+    call dein#load_toml(s:toml_path, {'lazy': 0})
+    call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
+    call dein#end()
+    call dein#save_state()
+  endif
+  call s:source_rc('plugins.rc.vim')
 
-call s:source_rc('encoding.rc.vim')
+  if dein#check_install()
+    " Installation check.
+    call dein#install()
+  endif
 
-"---------------------------------------------------------------------------
-"" Search:
-"
+  "---------------------------------------------------------------------------
+  "" Encoding:
+  "
 
-" Ignore the case of normal letters.
-set ignorecase
-" If the search pattern contains upper case characters, override ignorecase
-" option.
-set smartcase
+  call s:source_rc('encoding.rc.vim')
 
-" Enable incremental search.
-set incsearch
-" Don't highlight search result.
-set nohlsearch
+  "---------------------------------------------------------------------------
+  "" Search:
+  "
 
-" Searches wrap around the end of the file.
-set wrapscan
-"---------------------------------------------------------------------------
-"" FileType:
-"
+  " Ignore the case of normal letters.
+  set ignorecase
+  " If the search pattern contains upper case characters, override ignorecase
+  " option.
+  set smartcase
 
-call s:source_rc('filetype.rc.vim')
+  " Enable incremental search.
+  set incsearch
+  " Don't highlight search result.
+  set nohlsearch
 
-""---------------------------------------------------------------------------
-" Mappings:
-" "
+  " Searches wrap around the end of the file.
+  set wrapscan
+  "---------------------------------------------------------------------------
+  "" FileType:
+  "
 
-call s:source_rc('mappings.rc.vim')
-filetype on
+  call s:source_rc('filetype.rc.vim')
+
+  ""---------------------------------------------------------------------------
+  " Mappings:
+  " "
+
+  call s:source_rc('mappings.rc.vim')
+  filetype on
+endif

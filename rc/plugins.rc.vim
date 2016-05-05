@@ -44,3 +44,31 @@ execute 'source ~/.vim/rc/plugins/unite.rc.vim'
 if dein#tap('vim-quickrun') "{{{
 nmap <silent> <Leader>r <Plug>(quickrun)
   endif "}}}
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" コメントアウトを切り替えるマッピング
+" \c でカーソル行をコメントアウト
+" 再度 \c でコメントアウトを解除
+" 選択してから複数行の \c も可能
+nmap \c <Plug>(caw:zeropos:toggle)
+vmap \c <Plug>(caw:zeropos:toggle)
+" \C でコメントアウトの解除
+nmap \C <Plug>(caw:zeropos:uncomment)
+vmap \C <Plug>(caw:zeropos:uncomment)

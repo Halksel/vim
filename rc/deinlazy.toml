@@ -12,6 +12,9 @@ repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/unite-outline'
 on_source = 'unite.vim'
 
@@ -36,3 +39,21 @@ on_map = '<Plug>'
 repo = 'eagletmt/neco-ghc'
 on_ft = 'haskell'
 external_commands = 'ghc-mod'
+
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'dag/vim2hs'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
+on_i = 1
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
