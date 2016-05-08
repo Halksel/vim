@@ -116,3 +116,4 @@ noremap zz za
 nnoremap <ESC><ESC> :nohlsearch<CR>:match<CR>
 "}}}
 
+nnoremap <C-a> <C-a><C-x>
