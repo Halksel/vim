@@ -41,3 +41,6 @@ repo = 'Shougo/unite-build'
 [[plugins]]
 repo = 'Shougo/unite-help'
 on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
