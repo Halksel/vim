@@ -40,6 +40,7 @@ inoremap <C-t>  <C-v><TAB>
 
 " Normal mode keymappings: "{{{
 nnoremap <C-w><C-w> <C-w>l
+nnoremap cc ciw
 "}}}
 
 " [Space]: Other useful commands "{{{

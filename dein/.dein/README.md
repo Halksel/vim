@@ -1,110 +1,75 @@
-# hybrid.vim
+## About
 
-A dark colour scheme for Vim that combines the:
+[![Join the chat at https://gitter.im/Shougo/dein.vim](https://badges.gitter.im/Shougo/dein.vim.svg)](https://gitter.im/Shougo/dein.vim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/Shougo/dein.vim.svg?branch=master)](https://travis-ci.org/Shougo/dein.vim)
 
--   Default palette from [Tomorrow-Night](https://github.com/chriskempson/vim-tomorrow-theme).
--   Reduced contrast palette from [Codecademy](https://www.codecademy.com)'s
-    online editor.
--   Syntax group highlighting scheme from [Jellybeans](https://github.com/nanotech/jellybeans.vim)
--   Vimscript from [Solarized](https://github.com/altercation/vim-colors-solarized)
+Dein.vim is a dark powered Vim/Neovim plugin manager.
 
-## Updates
-
--   05/01/2016: Replaced `let g:hybrid_use_Xresources = 1` in favour of __`let
-    g:hybrid_custom_term_colors = 1`__
--   05/01/2016: Added `let g:hybrid_reduced_contrast = 1`
 
 ## Requirements
 
--   gVim 7.3+ on Linux, Mac and Windows.
--   Vim 7.3+ on Linux and Mac, using a terminal that supports 256 colours.
+* Vim 7.4 or above or NeoVim.
+* "rsync" command in $PATH
+* "git" command in $PATH (if you want to install github or vim.org plugins)
 
-## Installation
+## Quick start
 
-1.  Copy colors/hybrid.vim to:
+#### If you are using Unix/Linux or Mac OS X.
 
-    ```
-    ~/.vim/colors/hybrid.vim
-    ```
+1. Run below script.
 
-    or alternatively, use a plugin manger such as
-    [vim-plug](https://github.com/junegunn/vim-plug),
-    [NeoBundle](https://github.com/Shougo/neobundle.vim),
-    [Vundle](https://github.com/gmarik/Vundle.vim), or
-    [Pathogen](https://github.com/tpope/vim-pathogen).
+     ```
+     $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+     $ sh ./installer.sh {specify the installation directory}
+     ```
 
-2.  Add to ~/.vimrc:
+2. Edit your .vimrc like this.
 
-    ```vim
-    set background=dark
-    colorscheme hybrid
-    ```
+```vim
+if &compatible
+  set nocompatible
+endif
+set runtimepath^={path to dein.vim directory}
 
-## Define custom terminal colours (recommended)
+call dein#begin(expand('~/.cache/dein'))
 
-Due to the limited 256 palette, colours in Vim and gVim will still be slightly
-different.
+call dein#add({path to dein.vim directory})
+call dein#add('Shougo/neocomplete.vim')
+...
 
-In order to have Vim use the same colours as gVim (the way this colour scheme
-is intended) define the basic 16 colours in your terminal.
+call dein#end()
 
-#### Linux users: rxvt-unicode, xterm
+filetype plugin indent on
+```
 
-1.  Add the default palette to ~/.Xresources:
+## Concept
 
-    https://gist.github.com/3278077
+* Faster than NeoBundle
 
-    ![palette](http://dl.dropbox.com/u/23813887/Xresources-palette.png)
+* Simple
 
-    or alternatively, add the reduced contrast palette to ~/.Xresources:
+* No commands, Functions only
 
-    https://gist.github.com/w0ng/16e33902508b4a0350ae
+* Easy to test and maintain
 
-    ![palette](https://www.dropbox.com/s/0ny88dmfw84kcma/Xresources-palette-low.png?dl=1)
+* No Vundle/NeoBundle compatibility
 
-2.  Add to ~/.vimrc:
+## Future works (not implemented yet)
 
-    ```vim
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-    colorscheme hybrid
-    ```
+* Other types support (zip, svn, hg, ...)
 
-#### OSX users: iTerm
+* Unite log viewer
 
-1.  Import the default colour preset into iTerm:
+* Metadata repository support
 
-    https://raw.githubusercontent.com/w0ng/dotfiles/master/iterm2/hybrid.itermcolors
+### Options
 
-    ![iterm_palette](http://i.imgur.com/wSWCyen.png)
+Some common options. For a more detailed list, run `:h dein-options`
 
-    or alternatively, import the reduced contrast color preset into iTerm:
+| Option    | Type               | Description                                                                           |
+|-----------|--------------------|---------------------------------------------------------------------------------------|
+| `name`    | `string`           | A name for the plugin. If it is omitted, the tail of the repository name will be used |
+| `rev`     | `string`           | The revision number or branch/tag name for the repo                                   |
+| `build`   | `string`           | Command to run after the plugin is installed                                          |
+| `on_ft`   | `string` or `list` | Load a plugin for the current filetype                                                |
+| `on_cmd`  | `string` or `list` | Load the plugin for these commands                                                    |
 
-    https://raw.githubusercontent.com/w0ng/dotfiles/master/iterm2/hybrid-reduced-contrast.itermcolors
-
-    ![iterm_palette_reduced](https://www.dropbox.com/s/mrvr3ftkmym0fok/iterm_palette_reduced.png?dl=1)
-
-
-2.  Add to ~/.vimrc:
-
-    ```vim
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-    colorscheme hybrid
-    ```
-
-## Screenshots
-
-### Default palette on Linux
-
-![vim-help](http://dl.dropbox.com/u/23813887/vim-help.png)
-![vim-python](http://dl.dropbox.com/u/23813887/vim-python.png)
-![vim-markdown](http://dl.dropbox.com/u/23813887/vim-markdown.png)
-![vim-diff](http://dl.dropbox.com/u/23813887/vim-diff.png)
-![vim-spell](https://dl.dropboxusercontent.com/u/23813887/vim-spell.png)
-
-### Reduced contrast palette on OSX
-
-![vim-reduced1](https://www.dropbox.com/s/57mjs7rfzq1h128/vim-reduced1.png?dl=1)
-![vim-reduced2](https://www.dropbox.com/s/l6nvcm91llfxwjx/vim-reduced2.png?dl=1)
-![vim-reduced3](https://www.dropbox.com/s/838qoahio9klsz6/vim-reduced3.png?dl=1)

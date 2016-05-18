@@ -44,3 +44,7 @@ on_source = 'unite.vim'
 
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
