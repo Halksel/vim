@@ -19,6 +19,11 @@ inoremap <C-j> <Down>
 inoremap <C-k> <UP>
 inoremap <C-l> <Right>
 
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> gj j
+nnoremap <silent> gk k
+
 inoremap <C-d> <Del>
 
 " Visual mode keymappings: "{{{
