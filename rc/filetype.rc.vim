@@ -8,11 +8,12 @@ set autoindent smartindent
 let g:vimsyntax_noerror = 1
 
 let $VIM_CPP_STDLIB = "/opt/local/include/gcc49/c++"
+let $VIM_BOOST_LIB = "~/Downloads/boost_1_58_0/boost"
 function s:cpp()
   " BOOST_PP_XXX 等のハイライトを行う
+  setlocal path +=$VIM_BOOST_LIB,$VIM_CPP_STDLIB
   syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
   highlight link boost_pp cppStatement
-  setlocal path +=~/Downloads/boost_1_58_0/boost/,$VIM_CPP_STDLIB
 endfunction
 
 augroup vimrc-cpp
