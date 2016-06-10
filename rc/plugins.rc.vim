@@ -1,8 +1,19 @@
 if dein#tap('neocomplete.vim') && has('lua') "{{{
 let g:loaded_deoplete = 1
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplcache_force_overwrite_completefunc=1
+let g:clang_complete_auto = 1
 execute 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
 endif "}}}
+
+"clang_complete
+let g:clang_use_library   = 1
+let g:clang_library_path  = '/usr/share/clang'
+let g:clang_user_options  = '2>/dev/null || exit 0"'
+let g:neocomplcache_max_list=1000
+let g:clang_periodic_quickfix = 1
+let g:clang_complete_copen = 1
+let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 
 if dein#tap('unite.vim') "{{{
 nnoremap    [unite]   <Nop>
@@ -46,16 +57,16 @@ nmap <silent> <Leader>r <Plug>(quickrun)
   endif "}}}
 
 " Plugin key-mappings.
-imap <C-q>     <Plug>(neosnippet_expand_or_jump)
-smap <C-q>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-q>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
+" imap <C-q>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-q>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-q>     <Plug>(neosnippet_expand_target)
+"
+" " SuperTab like snippets behavior.
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"       \ "\<Plug>(neosnippet_expand_or_jump)"
+"       \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"       \ "\<Plug>(neosnippet_expand_or_jump)"
       \: "\<TAB>"
 
 " For snippet_complete marker.

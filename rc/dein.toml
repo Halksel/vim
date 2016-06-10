@@ -48,3 +48,5 @@ repo = 'w0ng/vim-hybrid'
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
+[[plugins]]
+repo = 'Rip-Rip/clang_complete'
