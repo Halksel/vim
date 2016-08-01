@@ -48,10 +48,6 @@ on_ft = 'haskell'
 repo = 'dag/vim2hs'
 on_ft = 'haskell'
 
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-
-
 # [[plugins]]
 # repo = 'Shougo/neosnippet'
 # depends = ['neosnippet-snippets']

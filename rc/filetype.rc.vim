@@ -2,6 +2,8 @@
 " FileType:
 "
 
+au BufNewFile,BufRead *.asm setfiletype mips
+
 " Enable smart indent.
 set autoindent smartindent
 " Vim
@@ -14,6 +16,7 @@ function s:cpp()
   setlocal path +=$VIM_BOOST_LIB,$VIM_CPP_STDLIB
   syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
   highlight link boost_pp cppStatement
+  let g:neocomplete#sources#include#paths = $VIM_CPP_STDLIB
 endfunction
 
 augroup vimrc-cpp

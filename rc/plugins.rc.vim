@@ -11,7 +11,6 @@ let g:clang_use_library   = 1
 let g:clang_library_path  = '/usr/share/clang'
 let g:clang_user_options  = '2>/dev/null || exit 0"'
 let g:neocomplcache_max_list=1000
-let g:clang_periodic_quickfix = 1
 let g:clang_complete_copen = 1
 let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 

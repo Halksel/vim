@@ -40,17 +40,20 @@ nnoremap < <<
 " Insert mode keymappings: "{{{
 " <C-t>: insert tab.
 inoremap <C-t>  <C-v><TAB>
-
+inoremap <silent> jj <ESC>
 "}}}
 
 " Normal mode keymappings: "{{{
 nnoremap <C-w><C-w> <C-w>l
 nnoremap cc ciw
+nnoremap Y y$
+nnoremap + <C-a>
+nnoremap - <C-x>
 "}}}
 
 " [Space]: Other useful commands "{{{
 " Smart space mapping.
-nmap  <Space>   [Space]
+nmap  <silent> <Space>   [Space]
 xmap  <Space>   [Space]
 nnoremap  [Space]   <Nop>
 xnoremap  [Space]   <Nop>

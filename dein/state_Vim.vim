@@ -8,4 +8,4 @@ filetype off
 silent! nnoremap <unique><silent> <Plug>(caw :call dein#autoload#_on_map('<lt>Plug>(caw', 'caw.vim','n')<CR>
 silent! xnoremap <unique><silent> <Plug>(caw :call dein#autoload#_on_map('<lt>Plug>(caw', 'caw.vim','x')<CR>
 silent! onoremap <unique><silent> <Plug>(caw :call dein#autoload#_on_map('<lt>Plug>(caw', 'caw.vim','o')<CR>
-autocmd dein-events InsertEnter * call dein#autoload#_on_event("InsertEnter", ['neocomplete.vim', 'neco-vim', 'neco-syntax', 'neosnippet', 'neosnippet-snippets'])
+autocmd dein-events InsertEnter * call dein#autoload#_on_event("InsertEnter", ['neocomplete.vim', 'neco-vim', 'neco-syntax'])

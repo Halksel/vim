@@ -44,6 +44,7 @@ let g:neocomplete#enable_auto_close_preview = 1
 "      \ '[^. *\t]\.\w*\|\h\w*::\w*'
 
 let g:neocomplete#sources#omni#input_patterns.python = '[^. *\t]\.\w*\|\h\w*'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 let g:neocomplete#sources#omni#functions.go = 'gocomplete#Complete'
 
