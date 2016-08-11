@@ -10,7 +10,7 @@ set autoindent smartindent
 let g:vimsyntax_noerror = 1
 
 let $VIM_CPP_STDLIB = "/opt/local/include/gcc49/c++"
-let $VIM_BOOST_LIB = "~/Downloads/boost_1_58_0/boost"
+let $VIM_BOOST_LIB = "~/Downloads/boost_1_58_0"
 function s:cpp()
   " BOOST_PP_XXX 等のハイライトを行う
   setlocal path +=$VIM_BOOST_LIB,$VIM_CPP_STDLIB

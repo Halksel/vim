@@ -79,6 +79,7 @@ nnoremap [Space]p
   \:set spelllang+=cjk<CR>
 nnoremap [Space]w
   \ :<C-u>call ToggleOption('wrap')<CR>
+nnoremap [Space]r :w<CR>:source $FILENAME<CR>
 "}}}
 
 " Easily edit .vimrc and .gvimrc "{{{
