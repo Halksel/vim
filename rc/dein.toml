@@ -50,3 +50,9 @@ repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
 repo = 'Rip-Rip/clang_complete'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-sort-import'

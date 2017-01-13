@@ -24,8 +24,6 @@ nnoremap <silent> k gk
 nnoremap <silent> gj j
 nnoremap <silent> gk k
 
-inoremap <C-d> <Del>
-
 " Visual mode keymappings: "{{{
 " <TAB>: indent.
 xnoremap <TAB> >

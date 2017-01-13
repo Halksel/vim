@@ -2,16 +2,22 @@
 " https://github.com/Shougo/shougo-s-github/tree/master/vim
 
 if &compatible
-    set nocompatible
-  endif
+  set nocompatible
+endif
 
 function! s:source_rc(path) abort
   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
 endfunction
 
 filetype off
+filetype plugin indent off
 
 set path +=~/.vim/rc
+"Setting vim ColorScheme
+set background=dark
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+colorscheme hybrid
 
 " Use ',' instead of '\'.
 " Use <Leader> in global plugin.
@@ -70,17 +76,17 @@ nnoremap / /\v
 " 全角スペースの表示
 """"""""""""""""""""""""""""""
 function! ZenkakuSpace()
-    highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
 
 
 if has('syntax')
-    augroup ZenkakuSpace
-        autocmd!
-        autocmd ColorScheme * call ZenkakuSpace()
-        autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
-    augroup END
-    call ZenkakuSpace()
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+  augroup END
+  call ZenkakuSpace()
 endif
 """"""""""""""""""""""""""""""
 "https://github.com/koara-local/dotvim/blob/master/vimrc
@@ -111,18 +117,18 @@ endfunction
 
 " dein
 if 1
-"  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-let s:dein_dir = expand('~/.vim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+  "  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+  let s:dein_dir = expand('~/.vim/dein')
+  let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim'
-    s:dein_repo_dir
+  " dein.vim がなければ github から落としてくる
+  if &runtimepath !~# '/dein.vim'
+    if !isdirectory(s:dein_repo_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim'
+      s:dein_repo_dir
+    endif
+    execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
   endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
 
   if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
@@ -174,5 +180,42 @@ endif
   " "
 
   call s:source_rc('mappings.rc.vim')
-  filetype on
+"   filetype on
+  filetype plugin indent on
 endif
+
+"setting for haskell
+
+set tags=tags;/,codex.tags;/
+
+let g:tagbar_type_haskell = {
+      \ 'ctagsbin'  : 'hasktags',
+      \ 'ctagsargs' : '-x -c -o-',
+      \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+      \ ],
+      \ 'sro'        : '.',
+      \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+      \ },
+      \ 'scope2kind' : {
+          \ 'module' : 'm',
+          \ 'class'  : 'c',
+          \ 'data'   : 'd',
+          \ 'type'   : 't'
+      \ }
+\ }

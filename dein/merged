@@ -1,1 +1,1 @@
-['clang_complete', 'cpp-vim', 'dein.vim', 'unite-build', 'unite-filetype', 'unite-help', 'unite-sudo', 'vim-filetype-haskell', 'vim-haskell-indent', 'vim-hybrid', 'vim-indent-guides', 'vim-toml', 'vim-unite-history']
+['clang_complete', 'cpp-vim', 'dein.vim', 'tagbar', 'unite-build', 'unite-filetype', 'unite-help', 'unite-sudo', 'vim-filetype-haskell', 'vim-haskell-indent', 'vim-haskell-sort-import', 'vim-hybrid', 'vim-indent-guides', 'vim-toml', 'vim-unite-history']

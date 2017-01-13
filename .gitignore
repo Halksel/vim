@@ -1,9 +1,0 @@
-# ignored setting
-*~
-*.swp
-.*
-
-# without ignoring
-/.gitignore
-/.vimrc
-/.vim/

@@ -31,3 +31,7 @@ augroup vimrc-set_filetype_cpp
   autocmd BufReadPost $VIM_CPP_STDLIB/* if empty(&filetype) | set filetype=cpp | endif
 augroup END
 
+augroup vimrc-haskell-sort-import
+    autocmd!
+      autocmd BufWritePre *.hs HaskellSortImport
+augroup END
