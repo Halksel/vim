@@ -12,8 +12,11 @@
 " noremap   <Left>   <nop>
 " noremap   <Right>  <nop>
 
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
+" CursolKey mappings
+nnoremap <C-a> <HOME>
+nnoremap <C-e> <END>
+inoremap <C-a> <HOME>
+nnoremap <C-e> <END>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <UP>
@@ -24,29 +27,25 @@ nnoremap <silent> k gk
 nnoremap <silent> gj j
 nnoremap <silent> gk k
 
-" Visual mode keymappings: "{{{
+" Indent
+nnoremap > >>
+nnoremap < <<
 " <TAB>: indent.
 xnoremap <TAB> >
 " <S-TAB>: unindent.
 xnoremap <S-TAB> <
 
-" Indent
-nnoremap > >>
-nnoremap < <<
-
-
 " Insert mode keymappings: "{{{
 " <C-t>: insert tab.
-inoremap <C-t>  <C-v><TAB>
 inoremap <silent> jj <ESC>
 "}}}
 
 " Normal mode keymappings: "{{{
-nnoremap <C-w><C-w> <C-w>l
 nnoremap cc ciw
 nnoremap Y y$
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap ; :
+nnoremap : ;
+
 "}}}
 
 " [Space]: Other useful commands "{{{

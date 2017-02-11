@@ -56,6 +56,7 @@ set cursorline
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+au BufEnter * execute 'lcd ' fnameescape(expand('%:p:h'))
 
 "Keymapping -normal
 noremap <Tab> >>

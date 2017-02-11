@@ -84,6 +84,6 @@ vmap \C <Plug>(caw:zeropos:uncomment)
 " for vim2hs
 let g:haskell_conceal = 0
 
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-d> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
