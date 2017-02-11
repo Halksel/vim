@@ -13,10 +13,6 @@
 " noremap   <Right>  <nop>
 
 " CursolKey mappings
-nnoremap <C-a> <HOME>
-nnoremap <C-e> <END>
-inoremap <C-a> <HOME>
-nnoremap <C-e> <END>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <UP>
