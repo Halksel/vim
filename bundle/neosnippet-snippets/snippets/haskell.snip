@@ -1,0 +1,35 @@
+snippet mpiinit
+options head
+  {-# LANGUAGE ScopedTypeVariables #-}
+  import Control.Parallel.MPI.Base as B;
+  import Control.Parallel.MPI.Fast as F;
+  import Control.Parallel.MPI.Simple as S;
+  import Data.Array.Storable
+
+  type ArrMsgInt = StorableArray Int Int
+  type ArrMsgFloat = StorableArray Float Float
+
+  root :: Rank
+  root = 0
+
+  makeNewArray :: Int -> Int -> IO (ArrMsgInt)
+  makeNewArray i j = newListArray (i,j) [i..j]
+
+  bounds :: (Int, Int)
+  bounds = (1,10)
+  arrMsg :: IO (StorableArray Int Int)
+  arrMsg = newListArray bounds [1..5]
+
+  main = do
+      B.init
+      size <- B.commSize commWorld
+      rank <- B.commRank commWorld
+      process rank
+
+  process :: Rank -> IO ()
+  process rank
+    | rank == 0 = do return ()
+    | otherwise = return ()
+
+
+

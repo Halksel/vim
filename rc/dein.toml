@@ -56,3 +56,6 @@ repo = 'majutsushi/tagbar'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-sort-import'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'

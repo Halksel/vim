@@ -80,3 +80,10 @@ vmap \c <Plug>(caw:zeropos:toggle)
 " \C でコメントアウトの解除
 nmap \C <Plug>(caw:zeropos:uncomment)
 vmap \C <Plug>(caw:zeropos:uncomment)
+
+" for vim2hs
+let g:haskell_conceal = 0
+
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
