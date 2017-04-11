@@ -8,7 +8,7 @@ endif "}}}
 
 "clang_complete
 let g:clang_use_library   = 1
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
 let g:clang_user_options  = '2>/dev/null || exit 0"'
 let g:neocomplcache_max_list=1000
 let g:clang_complete_copen = 1
@@ -52,7 +52,7 @@ endif "}}}
 execute 'source ~/.vim/rc/plugins/unite.rc.vim'
 
 if dein#tap('vim-quickrun') "{{{
-nmap <silent> <Leader>r <Plug>(quickrun)
+  nmap <silent> <Leader>r <Plug>(quickrun)
 endif "}}}
 let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
 imap <C-d> <Plug>(neosnippet_expand_or_jump)
@@ -84,6 +84,4 @@ vmap \C <Plug>(caw:zeropos:uncomment)
 " for vim2hs
 let g:haskell_conceal = 0
 
-nnoremap <silent><C-d> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+execute 'source ~/.vim/rc/plugins/NERDTree.rc.vim'

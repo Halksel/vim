@@ -43,9 +43,6 @@ repo = 'Shougo/unite-help'
 on_source = 'unite.vim'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
@@ -59,3 +56,9 @@ repo = 'itchyny/vim-haskell-sort-import'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'

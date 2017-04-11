@@ -111,7 +111,6 @@ xnoremap <expr> l foldclosed(line('.')) != -1 ? 'zogv0' : 'l'
 noremap [Space]j zj
 noremap [Space]k zk
 noremap zu :<C-u>Unite outline:foldings<CR>
-noremap zz za
 "}}}
 
 " Anywhere SID.

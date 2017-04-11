@@ -78,6 +78,9 @@ let g:neocomplete#sources#vim#complete_functions = {
   \ 'VimFiler' : 'vimfiler#complete',
   \ 'Vinarise' : 'vinarise#complete',
   \}
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \}
 
 "call neocomplete#custom#source('look', 'min_pattern_length', 4)
 " call neocomplete#custom#source('_', 'sorters', [])

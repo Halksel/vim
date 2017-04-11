@@ -35,3 +35,9 @@ augroup vimrc-haskell-sort-import
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
 augroup END
+
+set background=dark
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
+colorscheme iceberg
+set t_Co=256
