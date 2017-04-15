@@ -2,13 +2,15 @@
 " FileType:
 "
 
-au BufNewFile,BufRead *.asm setfiletype mips
-
 " Enable smart indent.
 set autoindent smartindent
 " Vim
 let g:vimsyntax_noerror = 1
 
+"""  mips
+au BufNewFile,BufRead *.asm setfiletype mips
+
+"""  cpp
 let $VIM_CPP_STDLIB = "/opt/local/include/gcc49/c++"
 let $VIM_BOOST_LIB = "~/Downloads/boost_1_58_0"
 function s:cpp()
@@ -30,14 +32,9 @@ augroup vimrc-set_filetype_cpp
   " filetype が設定されていない場合に filetype=cpp を設定する
   autocmd BufReadPost $VIM_CPP_STDLIB/* if empty(&filetype) | set filetype=cpp | endif
 augroup END
-
+""" Haskell
 augroup vimrc-haskell-sort-import
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
 augroup END
-
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
-colorscheme iceberg
-set t_Co=256
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

@@ -1,4 +1,4 @@
-" my .vimrc is copying Shougo's .vimrc.
+" my .vimrc is custumizing Shougo's .vimrc.
 " https://github.com/Shougo/shougo-s-github/tree/master/vim
 
 if &compatible
@@ -13,11 +13,6 @@ filetype off
 filetype plugin indent off
 
 set path +=~/.vim/rc
-"Setting vim ColorScheme
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-colorscheme hybrid
 
 " Use ',' instead of '\'.
 " Use <Leader> in global plugin.
@@ -33,6 +28,11 @@ nnoremap ,  <Nop>
 xnoremap ,  <Nop>
 
 syntax on
+"Setting vim ColorScheme
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
+set t_Co=256
+colorscheme iceberg
 
 set autochdir
 set directory=$HOME/.vim/tmp "スワップファイル用のディレクトリを指定する
@@ -52,25 +52,26 @@ set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止めない
 set magic
 set autoindent smartindent
 set cursorline
+set diffopt=vertical
+set backspace=indent,eol,start
+
+"""autocmd
 
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-" Turn off paste mode when leaving insert
-autocmd InsertLeave * set nopaste
 
 "Keymapping -normal
 noremap <Tab> >>
 noremap \<C-i> <C-i>
 noremap <S-Tab> <<
-nnoremap <silent> <leader>ht :GhcModType<CR>
+nnoremap <leader>ht :GhcModType<CR>
 nnoremap <C-K> <Plug>(caw:i:toggle)
 nnoremap <F1> :%y+<CR>
-nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Snipet/Snipet.cpp<CR>GVggyZZpggdd59Go
+nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd44Go
 nnoremap <F3> GVgg=
-nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Snipet/Snipet.cpp<CR>
+nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>
 nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
-nnoremap <F6> :<C-u>.tabedit ~/Documents/codes/Snipet/Templete.cpp<CR>
+nnoremap <F6> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
 nnoremap / /\v
 
 " http://inari.hatenablog.com/entry/2014/05/05/231307
@@ -221,3 +222,4 @@ let g:tagbar_type_haskell = {
           \ 'type'   : 't'
       \ }
 \ }
+autocmd BufReadPost * :colorscheme iceberg

@@ -73,6 +73,11 @@ nnoremap [Space]p
 nnoremap [Space]w
   \ :<C-u>call ToggleOption('wrap')<CR>
 nnoremap [Space]r :w<CR>:source $FILENAME<CR>
+
+function Invert()
+  let &background = &background ==# 'light' ? 'dark' : 'light'
+endfunction
+nnoremap [Space]cc :call Invert()<CR>
 "}}}
 
 " Toggle options. "{{{
@@ -157,3 +162,4 @@ map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
+

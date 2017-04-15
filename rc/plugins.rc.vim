@@ -6,6 +6,8 @@ let g:clang_complete_auto = 1
 execute 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
 endif "}}}
 
+execute 'source ~/.vim/rc/plugins/NERDTree.rc.vim'
+
 "clang_complete
 let g:clang_use_library   = 1
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
@@ -84,4 +86,3 @@ vmap \C <Plug>(caw:zeropos:uncomment)
 " for vim2hs
 let g:haskell_conceal = 0
 
-execute 'source ~/.vim/rc/plugins/NERDTree.rc.vim'
