@@ -86,3 +86,5 @@ vmap \C <Plug>(caw:zeropos:uncomment)
 " for vim2hs
 let g:haskell_conceal = 0
 
+" for diffchar
+let g:DiffUpdate = 1

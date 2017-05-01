@@ -21,15 +21,14 @@ on_source = 'unite.vim'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
-on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_path = '.*'
 
-[[plugins]]
-repo = 'Shougo/neco-syntax'
-on_i = 1
+# [[plugins]]
+# repo = 'Shougo/neco-syntax'
+# on_i = 1
 
 [[plugins]]
 repo = 'tyru/caw.vim'
@@ -57,3 +56,4 @@ on_ft = ['snippet']
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 on_i = 1
+

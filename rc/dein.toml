@@ -62,3 +62,7 @@ repo = 'w0ng/vim-hybrid'
 
 # [[plugins]]
 # repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'vim-scripts/diffchar.vim'
+
