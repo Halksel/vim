@@ -38,3 +38,12 @@ augroup vimrc-haskell-sort-import
       autocmd BufWritePre *.hs HaskellSortImport
 augroup END
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+function s:markdown()
+  inoremap \ \\
+endfunction
+
+augroup vimrc-markdown
+  autocmd!
+  autocmd FileType markdown call s:markdown()
+augroup END

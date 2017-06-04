@@ -88,3 +88,23 @@ let g:haskell_conceal = 0
 
 " for diffchar
 let g:DiffUpdate = 1
+
+"" plasticboy/vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_override_foldtext = 0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_emphasis_multiline = 0
+set conceallevel=2
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_new_list_item_indent = 2
+
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+
+" let g:previm_open_cmd = 'open -a Firefox'

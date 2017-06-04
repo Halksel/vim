@@ -66,3 +66,14 @@ repo = 'w0ng/vim-hybrid'
 [[plugins]]
 repo = 'vim-scripts/diffchar.vim'
 
+#[[plugins]]
+#repo = 'suan/vim-instant-markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'lervag/vimtex'

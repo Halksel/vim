@@ -90,6 +90,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
 
 " mappings."{{{
 " <C-f>, <C-b>: page move.
+
 inoremap <expr><C-f>  pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-b>  pumvisible() ? "\<PageUp>"   : "\<Left>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -126,10 +127,10 @@ endfunction"}}}
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " For cursor moving in insert mode(Not recommended)
-inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+" inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+" inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+" inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 "}}}
 
 let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]

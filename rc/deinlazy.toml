@@ -57,3 +57,7 @@ on_ft = ['snippet']
 repo = 'Shougo/neosnippet-snippets'
 on_i = 1
 
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
