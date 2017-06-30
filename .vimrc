@@ -1,3 +1,12 @@
+" Add ~/.vimrc {{{
+" function! s:source_rc(path) abort
+"   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
+" endfunction
+"
+" call s:source_rc('../.vimrc')
+" }}}
+
+" ~/.vim/rc/.vimrc
 " my .vimrc is custumizing Shougo's .vimrc.
 " https://github.com/Shougo/shougo-s-github/tree/master/vim
 
@@ -29,8 +38,8 @@ xnoremap ,  <Nop>
 
 syntax on
 "Setting vim ColorScheme
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
+" let g:hybrid_custom_term_colors = 1
+" let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
 set t_Co=256
 colorscheme iceberg
 
@@ -43,7 +52,6 @@ set number "行番号を表示する
 set cindent
 let loaded_matchparen = 1
 set clipboard+=autoselect
-set pastetoggle=<F7>
 set tabstop=2 "Tabをスペース2つに設定
 set expandtab "Tabを半角スペースで設定
 set shiftwidth=2 "vimにより生成されるファイルのtabを2つに設定
@@ -54,24 +62,35 @@ set autoindent smartindent
 set cursorline
 set diffopt=vertical
 set backspace=indent,eol,start
+set laststatus=2
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
 
 """autocmd
 
 " 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
-
-"Keymapping -normal
+" autocmd BufWritePre * :%s/\s\+$//ge
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ exe "normal g`\"" | endif
+augroup END
+"
+" "Keymapping -normal
 noremap <Tab> >>
 noremap \<C-i> <C-i>
 noremap <S-Tab> <<
 nnoremap <leader>ht :GhcModType<CR>
+nnoremap <leader>hh :GhcModTypeClear<CR>
 nnoremap <C-K> <Plug>(caw:i:toggle)
 nnoremap <F1> :%y+<CR>
 nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd44Go
-nnoremap <F3> GVgg=
+nnoremap <F3> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
 nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>
-nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
-nnoremap <F6> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
+" nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
+nnoremap <F5> :call previm#refresh()<CR>
+nnoremap = GVgg=
 nnoremap / /\v
 
 " http://inari.hatenablog.com/entry/2014/05/05/231307
@@ -143,6 +162,7 @@ if 1
     call dein#save_state()
   endif
   call s:source_rc('plugins.rc.vim')
+  let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
 
   if dein#check_install()
     " Installation check.
@@ -223,3 +243,8 @@ let g:tagbar_type_haskell = {
       \ }
 \ }
 autocmd BufReadPost * :colorscheme iceberg
+" vimdiffの色設定
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21

@@ -22,27 +22,27 @@ xnoremap    [unite]   <Nop>
 nmap    ;u [unite]
 xmap    ;u [unite]
 
-nnoremap <silent> ;b
-\ :<C-u>Unite -buffer-name=build`tabpagenr()` -no-quit build<CR>
-nnoremap <silent> ;t
-\ :<C-u>Unite -buffer-name=test`tabpagenr()` -no-quit build::test<CR>
-nnoremap <silent> ;o
-\ :<C-u>Unite outline -no-start-insert -resume<CR>
-nnoremap <silent> ;t
-\ :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
-xnoremap <silent> ;r
-\ d:<C-u>Unite -buffer-name=register
-\ -default-action=append register history/yank<CR>
-nnoremap <silent> <C-k>
-\ :<C-u>Unite change jump<CR>
-nnoremap <silent> ;g
-\ :<C-u>Unite grep -buffer-name=grep`tabpagenr()`
-\ -auto-preview -no-split -no-empty -resume<CR>
-nnoremap <silent> ;r
-\ :<C-u>Unite -buffer-name=register
-\ -default-action=append register history/yank<CR>
-nnoremap <silent> ;;
-\ :<C-u>Unite -start-insert command history/command<CR>
+" nnoremap <silent> ;b
+" \ :<C-u>Unite -buffer-name=build`tabpagenr()` -no-quit build<CR>
+" nnoremap <silent> ;t
+" \ :<C-u>Unite -buffer-name=test`tabpagenr()` -no-quit build::test<CR>
+" nnoremap <silent> ;o
+" \ :<C-u>Unite outline -no-start-insert -resume<CR>
+" nnoremap <silent> ;t
+" \ :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
+" xnoremap <silent> ;r
+" \ d:<C-u>Unite -buffer-name=register
+" \ -default-action=append register history/yank<CR>
+" nnoremap <silent> <C-k>
+" \ :<C-u>Unite change jump<CR>
+" nnoremap <silent> ;g
+" \ :<C-u>Unite grep -buffer-name=grep`tabpagenr()`
+" \ -auto-preview -no-split -no-empty -resume<CR>
+" nnoremap <silent> ;r
+" \ :<C-u>Unite -buffer-name=register
+" \ -default-action=append register history/yank<CR>
+" nnoremap <silent> ;;
+" \ :<C-u>Unite -start-insert command history/command<CR>
 
 " Execute help.
 nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
@@ -99,7 +99,7 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_emphasis_multiline = 0
 set conceallevel=2
 let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
+let g:tex_conceal = ''
 let g:vim_markdown_math = 1
 let g:vim_markdown_new_list_item_indent = 2
 
@@ -108,3 +108,19 @@ let g:vim_markdown_new_list_item_indent = 2
 "let g:instant_markdown_allow_unsafe_content = 1
 
 " let g:previm_open_cmd = 'open -a Firefox'
+
+"for ale
+let g:ale_sign_column_always = 1
+
+let g:lightline = {
+  \ 'colorscheme': 'landscape',
+  \'active': {
+  \  'left': [
+  \    ['mode', 'paste'],
+  \    ['readonly', 'filename', 'modified', 'ale'],
+  \  ]
+  \},
+  \'component_function': {
+  \  'ale': 'ALEGetStatusLine'
+  \}
+\ }

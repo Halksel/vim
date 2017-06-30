@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -77,3 +80,13 @@ repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'lervag/vimtex'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
