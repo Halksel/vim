@@ -43,7 +43,9 @@ nnoremap ; :
 nnoremap : ;
 
 "}}}
-
+" Visual mode keymappings: "{{{
+vnoremap wy iwy
+" }}}
 " [Space]: Other useful commands "{{{
 " Smart space mapping.
 nmap  <silent> <Space>   [Space]
@@ -165,4 +167,4 @@ nnoremap <silent> [Tag]p :tabprevious<CR>
 
 " for ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-h> <Plug>(ale_next_wrap)

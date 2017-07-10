@@ -85,7 +85,7 @@ nnoremap <leader>ht :GhcModType<CR>
 nnoremap <leader>hh :GhcModTypeClear<CR>
 nnoremap <C-K> <Plug>(caw:i:toggle)
 nnoremap <F1> :%y+<CR>
-nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd44Go
+nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd39Go
 nnoremap <F3> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
 nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>
 " nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
