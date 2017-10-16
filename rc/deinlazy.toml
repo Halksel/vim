@@ -34,10 +34,10 @@ on_path = '.*'
 repo = 'tyru/caw.vim'
 on_map = '<Plug>'
 
-[[plugins]]
-repo = 'eagletmt/neco-ghc'
-on_ft = 'haskell'
-external_commands = 'ghc-mod'
+# [[plugins]]
+# repo = 'eagletmt/neco-ghc'
+# on_ft = 'haskell'
+# external_commands = 'ghc-mod'
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
