@@ -10,9 +10,44 @@
 " my .vimrc is custumizing Shougo's .vimrc.
 " https://github.com/Shougo/shougo-s-github/tree/master/vim
 
-if &compatible
+if !&compatible
   set nocompatible
 endif
+
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+" dein settings {{{
+" dein自体の自動インストール
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+" プラグイン読み込み＆キャッシュ作成
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file)
+  call dein#end()
+  call dein#save_state()
+endif
+let s:tomllazy_file = fnamemodify(expand('<sfile>'), ':h').'/deinlazy.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:tomllazy_file)
+  call dein#end()
+  call dein#save_state()
+endif
+" 不足プラグインの自動インストール
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+" }}}
 
 function! s:source_rc(path) abort
   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
@@ -51,7 +86,6 @@ set hidden "変更中のファイルでも、保存しないで他のファイ�
 set number "行番号を表示する
 set cindent
 let loaded_matchparen = 1
-set clipboard+=autoselect
 set tabstop=2 "Tabをスペース2つに設定
 set expandtab "Tabを半角スペースで設定
 set shiftwidth=2 "vimにより生成されるファイルのtabを2つに設定
@@ -66,6 +100,9 @@ set laststatus=2
 if has('persistent_undo')
   set undodir=~/.vim/undo
   set undofile
+endif
+if !has('nvim')
+  set clipboard+=autoselect
 endif
 
 """autocmd
@@ -139,35 +176,6 @@ endfunction
 
 " dein
 if 1
-  "  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-  let s:dein_dir = expand('~/.vim/dein')
-  let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-  " dein.vim がなければ github から落としてくる
-  if &runtimepath !~# '/dein.vim'
-    if !isdirectory(s:dein_repo_dir)
-      execute '!git clone https://github.com/Shougo/dein.vim'
-      s:dein_repo_dir
-    endif
-    execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-  endif
-
-  if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
-    let s:toml_path = expand('~/.vim/rc/dein.toml')
-    let s:toml_lazy_path = expand('~/.vim/rc/deinlazy.toml')
-    call dein#load_toml(s:toml_path, {'lazy': 0})
-    call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
-    call dein#end()
-    call dein#save_state()
-  endif
-  call s:source_rc('plugins.rc.vim')
-  let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'
-
-  if dein#check_install()
-    " Installation check.
-    call dein#install()
-  endif
 
   "---------------------------------------------------------------------------
   "" Encoding:
@@ -242,7 +250,6 @@ let g:tagbar_type_haskell = {
           \ 'type'   : 't'
       \ }
 \ }
-autocmd BufReadPost * :colorscheme iceberg
 " vimdiffの色設定
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52

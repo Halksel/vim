@@ -1,6 +1,12 @@
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 depends = 'context_filetype.vim'
+disabled = '!has("Python3")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/deoplete.vim'
+depends = 'context_filetype.vim'
 disabled = '!has("lua")'
 on_i = 1
 
