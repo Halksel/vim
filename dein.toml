@@ -12,6 +12,54 @@ build = 'make'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
+repo = 'Shougo/unite-sudo'
+
+[[plugins]]
+repo = 'Shougo/unite-build'
+
+[[plugins]]
+repo = 'Shougo/unite-help'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+disabled = '!has("Python3")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+disabled = '!has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_i = 1
+
+[[plugins]]
 repo = 'thinca/vim-unite-history'
 on_source = 'unite.vim'
 
@@ -21,9 +69,6 @@ repo = 'osyo-manga/unite-filetype'
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
 on_ft = 'haskell'
-
-[[plugins]]
-repo = 'Shougo/unite-sudo'
 
 [[plugins]]
 repo = 'itchyny/vim-haskell-indent'
@@ -38,13 +83,6 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 # Operators
-[[plugins]]
-repo = 'Shougo/unite-build'
-
-[[plugins]]
-repo = 'Shougo/unite-help'
-on_source = 'unite.vim'
-
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
@@ -69,8 +107,8 @@ repo = 'cocopon/iceberg.vim'
 [[plugins]]
 repo = 'vim-scripts/diffchar.vim'
 
-#[[plugins]]
-#repo = 'suan/vim-instant-markdown'
+[[plugins]]
+repo = 'suan/vim-instant-markdown'
 
 [[plugins]]
 repo = 'kannokanno/previm'
@@ -81,12 +119,40 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'lervag/vimtex'
 
-[[plugins]]
-repo = 'vim-latex/vim-latex'
-
+# [[plugins]]
+# repo = 'vim-latex/vim-latex'
+#
 [[plugins]]
 repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = 'haskell'
+external_commands = 'ghc-mod'
+
+[[plugins]]
+repo = 'dag/vim2hs'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
+on_i = 1
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'nbouscal/vim-stylish-haskell'

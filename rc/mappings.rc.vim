@@ -15,7 +15,7 @@
 " CursolKey mappings
 inoremap <C-h> <Left>
 " inoremap <C-j> <Down>
-inoremap <C-k> <UP>
+" inoremap <C-k> <UP>
 inoremap <C-l> <Right>
 
 nnoremap <silent> j gj
@@ -166,5 +166,5 @@ nnoremap <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
 
 " for ale
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <C-k> <Plug>(ale_previous_wrap)
+nmap <C-j> <Plug>(ale_next_wrap)

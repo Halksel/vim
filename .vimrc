@@ -3,7 +3,7 @@
 "   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
 " endfunction
 "
-" call s:source_rc('../.vimrc')
+  " call s:source_rc('../.vimrc')
 " }}}
 
 " ~/.vim/rc/.vimrc
@@ -33,13 +33,6 @@ let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_file)
-  call dein#end()
-  call dein#save_state()
-endif
-let s:tomllazy_file = fnamemodify(expand('<sfile>'), ':h').'/deinlazy.toml'
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-  call dein#load_toml(s:tomllazy_file)
   call dein#end()
   call dein#save_state()
 endif
@@ -116,11 +109,9 @@ augroup END
 "
 " "Keymapping -normal
 noremap <Tab> >>
-noremap \<C-i> <C-i>
 noremap <S-Tab> <<
-nnoremap <leader>ht :GhcModType<CR>
-nnoremap <leader>hh :GhcModTypeClear<CR>
-nnoremap <C-K> <Plug>(caw:i:toggle)
+nmap \c <Plug>(caw:zeropos:toggle)
+vmap \c <Plug>(caw:zeropos:toggle)
 nnoremap <F1> :%y+<CR>
 nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd39Go
 nnoremap <F3> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
