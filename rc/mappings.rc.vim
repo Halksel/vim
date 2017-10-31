@@ -168,3 +168,5 @@ nnoremap <silent> [Tag]p :tabprevious<CR>
 " for ale
 nmap <C-k> <Plug>(ale_previous_wrap)
 nmap <C-j> <Plug>(ale_next_wrap)
+" nmap <C-f> <Plug>(ale_fix)
+nmap <C-s> <Plug>(ale_toggle)
