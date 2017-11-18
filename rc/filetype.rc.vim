@@ -13,6 +13,9 @@ au BufNewFile,BufRead *.asm setfiletype mips
 """  yacc
 au BufNewFile,BufRead *.y setfiletype yacc
 
+"""  m68k
+au BufNewFile,BufRead *.s setfiletype asm
+
 """  cpp
 let $VIM_CPP_STDLIB = "/opt/local/include/gcc49/c++"
 let $VIM_BOOST_LIB = "~/Downloads/boost_1_58_0"
