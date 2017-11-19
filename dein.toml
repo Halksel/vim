@@ -99,12 +99,6 @@ repo = 'itchyny/vim-haskell-sort-import'
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
 repo = 'vim-scripts/diffchar.vim'
 
 [[plugins]]
@@ -156,3 +150,14 @@ on_ft = 'markdown'
 
 [[plugins]]
 repo = 'nbouscal/vim-stylish-haskell'
+
+#colorscheam
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'jdkanani/vim-material-theme'
+

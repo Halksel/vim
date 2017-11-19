@@ -68,8 +68,6 @@ syntax on
 "Setting vim ColorScheme
 " let g:hybrid_custom_term_colors = 1
 " let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette
-set t_Co=256
-colorscheme iceberg
 
 set autochdir
 set directory=$HOME/.vim/tmp "スワップファイル用のディレクトリを指定する
@@ -202,6 +200,11 @@ if 1
   " "
 
   call s:source_rc('mappings.rc.vim')
+
+  ""
+  " Plugins:
+  ""
+  call s:source_rc('plugins.rc.vim')
 "   filetype on
   filetype plugin indent on
 endif
@@ -242,6 +245,9 @@ let g:tagbar_type_haskell = {
       \ }
 \ }
 " vimdiffの色設定
+syntax on
+set t_Co=256
+colorscheme iceberg
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
