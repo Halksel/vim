@@ -98,8 +98,8 @@ repo = 'itchyny/vim-haskell-sort-import'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
-[[plugins]]
-repo = 'vim-scripts/diffchar.vim'
+# [[plugins]]
+# repo = 'vim-scripts/diffchar.vim'
 
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
