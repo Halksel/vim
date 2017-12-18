@@ -1,7 +1,5 @@
 " Add ~/.vimrc {{{
-" function! s:source_rc(path) abort
-"   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
-" endfunction
+" execute 'source' fnameescape(expand('~/.vim/.vimrc'))
 "
   " call s:source_rc('../.vimrc')
 " }}}
