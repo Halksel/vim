@@ -1,7 +1,6 @@
-" Add ~/.vimrc {{{
+" Add ~/.vimrc or .config/nvim/init.vim {{{
 " execute 'source' fnameescape(expand('~/.vim/.vimrc'))
 "
-  " call s:source_rc('../.vimrc')
 " }}}
 
 " ~/.vim/rc/.vimrc
