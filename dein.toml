@@ -98,6 +98,9 @@ repo = 'w0rp/ale'
 repo = 'vim-airline/vim-airline'
 
 [[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
 repo = 'tyru/caw.vim'
 
 [[plugins]]
