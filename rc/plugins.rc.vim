@@ -6,7 +6,17 @@ let g:clang_complete_auto = 1
 execute 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
 endif "}}}
 
+"setting for NERDTree
 execute 'source ~/.vim/rc/plugins/NERDTree.rc.vim'
+
+"setting for air-line
+execute 'source ~/.vim/rc/plugins/air-line.rc.vim'
+
+"setting for vim-fugitive
+execute 'source ~/.vim/rc/plugins/vim-fugitive.rc.vim'
+
+"setting for ale
+execute 'source ~/.vim/rc/plugins/ale.rc.vim'
 
 "clang_complete
 let g:clang_use_library   = 1
@@ -16,45 +26,31 @@ let g:neocomplcache_max_list=1000
 let g:clang_complete_copen = 1
 let g:clang_user_options = '-std=c++14 -stdlib=libc++'
 
-if dein#tap('unite.vim') "{{{
-nnoremap    [unite]   <Nop>
-xnoremap    [unite]   <Nop>
-nmap    ;u [unite]
-xmap    ;u [unite]
-
-" nnoremap <silent> ;b
-" \ :<C-u>Unite -buffer-name=build`tabpagenr()` -no-quit build<CR>
-" nnoremap <silent> ;t
-" \ :<C-u>Unite -buffer-name=test`tabpagenr()` -no-quit build::test<CR>
-" nnoremap <silent> ;o
-" \ :<C-u>Unite outline -no-start-insert -resume<CR>
-" nnoremap <silent> ;t
-" \ :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
-" xnoremap <silent> ;r
-" \ d:<C-u>Unite -buffer-name=register
-" \ -default-action=append register history/yank<CR>
-" nnoremap <silent> <C-k>
-" \ :<C-u>Unite change jump<CR>
-" nnoremap <silent> ;g
-" \ :<C-u>Unite grep -buffer-name=grep`tabpagenr()`
-" \ -auto-preview -no-split -no-empty -resume<CR>
-" nnoremap <silent> ;r
-" \ :<C-u>Unite -buffer-name=register
-" \ -default-action=append register history/yank<CR>
-" nnoremap <silent> ;;
-" \ :<C-u>Unite -start-insert command history/command<CR>
-
-" Execute help.
-nnoremap <silent> <C-h>  :<C-u>Unite -buffer-name=help help<CR>
-
-" Execute help by cursor keyword.
-nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
+"setting for denite
+if dein#tap('denite.vim') "{{{
+  execute 'source ~/.vim/rc/plugins/denite.rc.vim'
 endif "}}}
 
-execute 'source ~/.vim/rc/plugins/unite.rc.vim'
 
 if dein#tap('vim-quickrun') "{{{
   nmap <silent> <Leader>r <Plug>(quickrun)
+  " vimprocで非同期実行
+" 成功時にバッファ、失敗時にQuickFixで表示
+" 結果表示のサイズ調整など
+  let g:quickrun_config = {
+      \ '_' : {
+          \ 'runner' : 'vimproc',
+          \ 'runner/vimproc/updatetime' : 40,
+          \ 'outputter' : 'error',
+          \ 'outputter/error/success' : 'buffer',
+          \ 'outputter/error/error'   : 'quickfix',
+          \ 'outputter/buffer/split' : ':botright 8sp',
+      \ }
+  \}
+
+" 実行時に前回の表示内容をクローズ&保存してから実行
+  let g:quickrun_no_default_key_mappings = 1
+  nmap <Leader>r :cclose<CR>:write<CR>:QuickRun -mode n<CR>
 endif "}}}
 let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
 imap <C-d> <Plug>(neosnippet_expand_or_jump)
@@ -108,19 +104,3 @@ let g:vim_markdown_new_list_item_indent = 2
 "let g:instant_markdown_allow_unsafe_content = 1
 
 " let g:previm_open_cmd = 'open -a Firefox'
-
-"for ale
-let g:ale_sign_column_always = 1
-
-let g:lightline = {
-  \ 'colorscheme': 'landscape',
-  \'active': {
-  \  'left': [
-  \    ['mode', 'paste'],
-  \    ['readonly', 'filename', 'modified', 'ale'],
-  \  ]
-  \},
-  \'component_function': {
-  \  'ale': 'ALEGetStatusLine'
-  \}
-\ }
