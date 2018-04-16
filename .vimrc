@@ -243,7 +243,8 @@ let g:tagbar_type_haskell = {
 \ }
 
 "setting for python
-let g:python3_host_prog = '/Users/admin/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " vimdiffの色設定
 syntax on
 set t_Co=256
