@@ -39,11 +39,18 @@ augroup vimrc-set_filetype_cpp
   autocmd BufReadPost $VIM_CPP_STDLIB/* if empty(&filetype) | set filetype=cpp | endif
 augroup END
 """ Haskell
-augroup vimrc-haskell-sort-import
+augroup vimrc-haskell
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
+      autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+""" Python
+augroup vimrc-python
+    autocmd!
+      autocmd BufWritePost *.py :0,$!yapf
+
+augroup END
 
 function s:markdown()
   inoremap \ \\
