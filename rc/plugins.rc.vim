@@ -85,6 +85,9 @@ let g:haskell_conceal = 0
 " for diffchar
 let g:DiffUpdate = 1
 
+" for supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 "" plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_folding_style_pythonic = 1

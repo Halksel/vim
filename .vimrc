@@ -243,7 +243,7 @@ let g:tagbar_type_haskell = {
 \ }
 
 "setting for python
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 " vimdiffの色設定
 syntax on

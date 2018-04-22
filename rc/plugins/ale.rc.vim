@@ -22,7 +22,7 @@ let g:ale_keep_list_window_open = 0
 
 " 有効にするlinter
 let g:ale_linters = {
-\   'python': ['flake8'],
+\   'python': ['flake8','mypy'],
 \}
 
 " ALE用プレフィックス
