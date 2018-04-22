@@ -42,13 +42,15 @@ augroup END
 augroup vimrc-haskell
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
+      autocmd BufWritePost *.hs :%!hindent
+      autocmd BufWritePost *.hs :%!stylish-haskell
       autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 """ Python
 augroup vimrc-python
     autocmd!
-      autocmd BufWritePost *.py :0,$!yapf
+      autocmd BufWritePost *.py :%!yapf
 
 augroup END
 
