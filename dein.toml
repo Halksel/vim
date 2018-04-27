@@ -77,9 +77,6 @@ repo = 'itchyny/vim-haskell-sort-import'
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'suan/vim-instant-markdown'
-
-[[plugins]]
 repo = 'kannokanno/previm'
 
 [[plugins]]
