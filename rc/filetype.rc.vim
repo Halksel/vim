@@ -42,8 +42,8 @@ augroup END
 augroup vimrc-haskell
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
-      autocmd BufWritePost *.hs :%!hindent
-      autocmd BufWritePost *.hs :%!stylish-haskell
+      setlocal formatprg=hindent
+"       setlocal formatprg=stylish-haskell
       autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
