@@ -85,12 +85,11 @@ set cursorline
 set diffopt=vertical
 set backspace=indent,eol,start
 set laststatus=2
+set clipboard^=unnamedplus
+
 if has('persistent_undo')
   set undodir=~/.vim/undo
   set undofile
-endif
-if !has('nvim')
-  set clipboard+=autoselect
 endif
 
 """autocmd
