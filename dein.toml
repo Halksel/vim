@@ -86,9 +86,6 @@ repo = 'tyru/open-browser.vim'
 repo = 'lervag/vimtex'
 
 [[plugins]]
-repo = 'vim-latex/vim-latex'
-
-[[plugins]]
 repo = 'w0rp/ale'
 
 [[plugins]]

@@ -110,8 +110,6 @@ nnoremap <F1> :%y+<CR>
 nnoremap <F2> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>GVggyZZpggdd39Go
 nnoremap <F3> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Templete.cpp<CR>
 nnoremap <F4> :<C-u>.tabedit ~/Documents/codes/Competition/Snipet/Snipet.cpp<CR>
-" nnoremap <F5> :<C-u>.tabedit $MYVIMRC<CR>
-nnoremap <F5> :call previm#refresh()<CR>
 nnoremap = GVgg=
 nnoremap / /\v
 

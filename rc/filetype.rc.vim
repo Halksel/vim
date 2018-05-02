@@ -56,6 +56,7 @@ augroup END
 
 function s:markdown()
   inoremap \ \\
+  nnoremap <F5> :call previm#refresh()<CR>
 endfunction
 
 augroup vimrc-markdown
