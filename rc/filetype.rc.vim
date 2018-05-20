@@ -52,6 +52,12 @@ augroup vimrc-python
 
 augroup END
 
+""" JSON
+augroup vimrc-JSON
+    autocmd!
+      autocmd BufWritePost *.json :%!jq '.'
+augroup END
+
 function s:markdown()
   inoremap \ \\
 endfunction
