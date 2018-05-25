@@ -1,6 +1,5 @@
 nnoremap <Plug>(NERDTreeToggle) :NERDTreeToggle<CR>
 nmap <C-d> <Plug>(NERDTreeToggle)
-autocmd vimenter * NERDTree
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -26,3 +25,6 @@ call NERDTreeHighlightFile('cpp', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'red', 'none', '#FFa500', '#151515')
 call NERDTreeHighlightFile('php', 'magenta', 'none', '#FF00FF', '#151515')
+
+let NERDTreeShowLineNumbers = 1 
+let NERDTreeNaturalSort = 1
