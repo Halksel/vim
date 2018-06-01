@@ -42,13 +42,15 @@ augroup END
 augroup vimrc-haskell
     autocmd!
       autocmd BufWritePre *.hs HaskellSortImport
+      setlocal formatprg=hindent
+"       setlocal formatprg=stylish-haskell
       autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 augroup END
 
 """ Python
 augroup vimrc-python
     autocmd!
-      autocmd BufWritePost *.py :0,$!yapf
+      autocmd BufWritePost *.py :%!yapf
 
 augroup END
 
@@ -60,6 +62,7 @@ augroup END
 
 function s:markdown()
   inoremap \ \\
+  nnoremap <F5> :call previm#refresh()<CR>
 endfunction
 
 augroup vimrc-markdown
