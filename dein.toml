@@ -146,6 +146,9 @@ repo = 'cohama/agit.vim'
 repo = 'rhysd/committia.vim'
 
 [[plugins]]
+repo = 'idanarye/vim-merginal'
+
+[[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
