@@ -143,6 +143,9 @@ repo = 'airblade/vim-gitgutter'
 repo = 'cohama/agit.vim'
 
 [[plugins]]
+repo = 'rhysd/committia.vim'
+
+[[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
