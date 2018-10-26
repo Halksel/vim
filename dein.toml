@@ -140,6 +140,9 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
+repo = 'cohama/agit.vim'
+
+[[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
 
