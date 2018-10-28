@@ -9,8 +9,8 @@ endif "}}}
 "setting for NERDTree
 execute 'source ~/.vim/rc/plugins/NERDTree.rc.vim'
 
-"setting for air-line
-execute 'source ~/.vim/rc/plugins/air-line.rc.vim'
+"setting for lightline
+execute 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 "setting for vim-fugitive
 execute 'source ~/.vim/rc/plugins/vim-fugitive.rc.vim'
@@ -107,3 +107,4 @@ let g:vim_markdown_new_list_item_indent = 2
 "let g:instant_markdown_allow_unsafe_content = 1
 
 " let g:previm_open_cmd = 'open -a Firefox'
+
