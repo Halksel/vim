@@ -81,7 +81,7 @@ set smarttab "新しい行を作った時に高度な自動インデントを行
 set whichwrap=b,s,h,l,<,>,[,] " カーソルを行頭、行末で止めない
 set magic
 set autoindent smartindent
-set cursorline
+" set cursorline
 set diffopt=vertical
 set backspace=indent,eol,start
 set laststatus=2
