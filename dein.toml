@@ -50,6 +50,12 @@ repo = 'itchyny/vim-haskell-indent'
 on_ft = 'haskell'
 
 [[plugins]]
+repo = 'itchyny/vim-haskell-sort-import'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
 repo = 'vim-jp/cpp-vim'
 on_ft = 'cpp'
 
@@ -71,9 +77,6 @@ repo = 'Rip-Rip/clang_complete'
 repo = 'majutsushi/tagbar'
 
 [[plugins]]
-repo = 'itchyny/vim-haskell-sort-import'
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]
@@ -87,12 +90,6 @@ repo = 'lervag/vimtex'
 
 [[plugins]]
 repo = 'w0rp/ale'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
