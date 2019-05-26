@@ -240,12 +240,14 @@ let g:tagbar_type_haskell = {
 \ }
 
 "setting for python
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+"/root/.pyenv/versions/neovim3/bin/python
+let g:python2_host_prog = $PYENV_ROOT . 'versions/neovim2/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . 'versions/neovim3/bin/python'
 
 " vimdiffの色設定
 syntax on
 set t_Co=256
-colorscheme iceberg
+colorscheme yozakura
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
