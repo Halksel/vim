@@ -1,0 +1,101 @@
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'kana/vim-filetype-haskell'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'vim-jp/cpp-vim'
+on_ft = 'cpp'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = 'haskell'
+external_commands = 'ghc-mod'
+
+[[plugins]]
+repo = 'dag/vim2hs'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
+on_i = 1
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'integralist/vim-mypy'
+on_ft = 'python'
+
+[[plugins]]
+repo = "OmniSharp/omnisharp-vim"
+on_ft = ["cs"]
+build = "xbuild server/OmniSharp.sln"
+
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = ["js"]
+
+[[plugins]]
+repo = 'mattn/jscomplete-vim'
+on_ft = ["js"]
+hook_add = '''
+  setlocal omnifunc=jscomplete#CompleteJS
+'''
+
+[[plugins]]
+repo = 'myhere/vim-nodejs-complete'
+on_ft = ["js"]
+hook_add = '''
+  setlocal omnifunc=jscomplete#CompleteJS
+  if !exists('g:neocomplcache_omni_functions')
+    let g:neocomplcache_omni_functions = {}
+  endif
+  let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
+  let g:node_usejscomplete = 1
+'''
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ["js"]
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+on_ft = ["js"]
+hook_add = '''
+  let g:syntastic_check_on_open=0 "ファイルを開いたときはチェックしない
+  let g:syntastic_check_on_save=1 "保存時にはチェック
+  let g:syntastic_check_on_wq = 0 " wqではチェックしない
+  let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
+  let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
+  set statusline+=%#warningmsg# "エラーメッセージの書式
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
+  let g:syntastic_mode_map = {
+        \ 'mode': 'active',
+        \ 'active_filetypes': ['javascript'],
+        \ 'passive_filetypes': []
+        \ }
+  nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
+'''
+[[plugins]]
+repo = 'ap/vim-css-color'
+on_ft = 'css'
+

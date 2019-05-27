@@ -1,0 +1,48 @@
+snippet mpiinit
+options head indent
+  {-# LANGUAGE ScopedTypeVariables #-}
+  import Control.Parallel.MPI.Base as B;
+  import Control.Parallel.MPI.Simple as S;
+
+  root :: Rank
+  root = 0
+
+  main = do
+      B.init
+      size <- B.commSize commWorld
+      rank <- B.commRank commWorld
+      process rank
+      B.finalize
+
+  process :: Rank -> IO ()
+  process rank
+    | rank == 0 = do return ()
+    | otherwise = return ()
+
+snippet compete
+options  head
+  import Control.Applicative
+  import System.IO
+  import Data.List
+
+  main = do
+    ${1}
+
+snippet ifelse
+  if ${1:#:condition}
+    then
+      ${2:#:truestate}
+    else
+      ${3:#:falsestate}
+
+snippet ifdo
+    if ${1:#:condition}
+      then do
+        ${2:#:truestate}
+        return ()
+      else do
+        ${3:#:falsestate}
+        return ()
+
+
+
