@@ -1,5 +1,6 @@
 dein
-tmp
+/tmp
+!/tmp/TEMP
 temp
 undo
 .DS_Store
