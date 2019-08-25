@@ -1,6 +1,5 @@
 dein
-/tmp
-!/tmp/TEMP
-temp
+tmp
+!tmp/.gitkeep
 undo
 .DS_Store
