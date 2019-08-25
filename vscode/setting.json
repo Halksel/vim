@@ -1,0 +1,61 @@
+{
+	"vim.useSystemClipboard": true,
+	"vim.visualstar": true,
+	"vim.whichwrap": "h,l,<,>,[,]",
+	"files.trimTrailingWhitespace": true,
+	"vim.insertModeKeyBindings": [
+		{
+			"before": [
+				"j",
+				"j"
+			],
+			"after": [
+				"<Esc>"
+			]
+		}
+	],
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				";"
+			],
+			"after": [
+				":"
+			]
+		},
+		{
+			"before": [
+				":"
+			],
+			"after": [
+				";"
+			]
+		}
+	],
+	"vim.visualModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				";"
+			],
+			"after": [
+				":"
+			],
+		},
+		{
+			"before": [
+				":"
+			],
+			"after": [
+				";"
+			]
+		}
+	],
+	"editor.renderWhitespace": "all",
+	"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+	"editor.formatOnPaste": true, // ペースト時に自動でフォーマット
+	"editor.formatOnSave": true, // ファイル保存時に自動でフォーマット
+	"editor.formatOnType": true,
+	"window.zoomLevel": 0, // 入力した行を自動でフォーマット
+	"editor.tabSize": 2, // tab-width 2
+	"editor.insertSpaces": true, // tab to space
+}
