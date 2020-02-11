@@ -18,9 +18,6 @@ execute 'source ~/.vim/rc/plugins/vim-fugitive.rc.vim'
 "setting for ale
 execute 'source ~/.vim/rc/plugins/ale.rc.vim'
 
-"setting for CoC
-execute 'source ~/.vim/rc/plugins/CoC.rc.vim'
-
 "clang_complete
 let g:clang_use_library   = 1
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/'

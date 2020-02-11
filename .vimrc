@@ -7,6 +7,7 @@
 " my .vimrc is custumizing Shougo's .vimrc.
 " https://github.com/Shougo/shougo-s-github/tree/master/vim
 
+let g:statline_syntastic = 0
 if !&compatible
   set nocompatible
 endif
@@ -44,6 +45,7 @@ endif
 function! s:source_rc(path) abort
   execute 'source' fnameescape(expand('~/.vim/rc/' . a:path))
 endfunction
+
 
 filetype off
 filetype plugin indent off
